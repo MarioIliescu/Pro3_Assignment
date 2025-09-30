@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package slaughterhouse;
+
+message ProductIdRequest {
+  int64 product_id = 1;
+}
+
+message AnimalRegResponse {
+  repeated string registration_numbers = 1;
+}
+
+message AnimalRegRequest {
+  string registration_number = 1;
+}
+
+message ProductInfo {
+  int64 product_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message ProductsResponse {
+  repeated ProductInfo products = 1;
+}
+
+service SlaughterhouseService {
+  // Returns registration numbers of animals involved in the given product
+  rpc GetAnimalsForProduct(ProductIdRequest) returns (AnimalRegResponse);
+
+  // Returns products that include parts from the animal with the given registration number
+  rpc GetProductsForAnimal(AnimalRegRequest) returns (ProductsResponse);
+}
