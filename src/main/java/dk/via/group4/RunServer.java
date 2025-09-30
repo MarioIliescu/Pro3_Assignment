@@ -1,6 +1,6 @@
-package dk.via.group4.program;
+package dk.via.group4;
 
-public class RunClient
+public class RunServer
 {
   public static void main(String[] args)
   {
